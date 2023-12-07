@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:events_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class Event {
@@ -58,7 +59,7 @@ class EventProvider with ChangeNotifier {
       notifyListeners();
 
       final response = await _dio.get(
-        'https://sde-007.api.assignment.theinternetfolks.works/v1/event',
+        '${Constants.baseUrl}/event',
       );
 
       if (response.data['status']) {
@@ -93,7 +94,7 @@ class EventProvider with ChangeNotifier {
   Future<void> fetchEventDetail(int eventId) async {
     try {
       final response = await _dio.get(
-        'https://sde-007.api.assignment.theinternetfolks.works/v1/event/$eventId',
+        '${Constants.baseUrl}/event/$eventId',
       );
 
       if (response.data['status']) {
@@ -116,7 +117,7 @@ class EventProvider with ChangeNotifier {
       notifyListeners();
 
       final response = await _dio.get(
-        'https://sde-007.api.assignment.theinternetfolks.works/v1/event?search=$searchTerm',
+        '${Constants.baseUrl}/event?search=$searchTerm',
       );
 
       if (response.data['status']) {
